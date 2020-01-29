@@ -4,14 +4,14 @@ import './CreateBoardForm.css'
 import './InputField'
 import InputField from './InputField'
 
-function CreateBoardForm() {
+function CreateBoardForm(props) {
 
-    const [width, setWidth] = useState("");
-    const [height, setHeight] = useState("");
-    const [mines, setMines] = useState("");
+    const [width, setWidth] = useState(0);
+    const [height, setHeight] = useState(0);
+    const [mines, setMines] = useState(0);
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        alert(`Submitting Width: ${width} Height: ${height} Mines: ${mines}`);
+        props.onSubmit(width, height, mines);
     }
 
     return (
