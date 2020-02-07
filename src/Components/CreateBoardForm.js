@@ -18,7 +18,7 @@ function CreateBoardForm(props) {
         <form onSubmit={handleSubmit}>
             <InputField label='Width' minSize={MIN_BOARD_SIZE} maxSize={MAX_BOARD_SIZE} onChange={e => setWidth(e.target.value)} />
             <InputField label='Height' minSize={MIN_BOARD_SIZE} maxSize={MAX_BOARD_SIZE} onChange={e => setHeight(e.target.value)} />
-            <InputField label='Mines' minSize={1} maxSize={width * height} onChange={e => setMines(e.target.value)} />
+            <InputField label='Mines' minSize={1} maxSize={width * height -1} onChange={e => setMines(e.target.value)} />
             <div className="submit-button">
                 <button>Create Board</button>
             </div>
