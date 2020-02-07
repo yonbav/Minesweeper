@@ -49,6 +49,7 @@ function Board(props) {
 
         const queue = [];
         queue.push(cellsRef[row * props.width + col].current);
+        const visited = {}
 
         while (queue.length !== 0)
         {
@@ -57,13 +58,12 @@ function Board(props) {
             const rowEndIndex = Math.min(curCell.props.rowIndex+2,props.height);
             const colStartIndex = Math.max(curCell.props.colIndex-1,0);
             const colEndIndex = Math.min(curCell.props.colIndex+2,props.width);
-            const visited = {}
 
 
             for (let i = rowStartIndex; i < rowEndIndex; i++) {
                 for (let j = colStartIndex; j < colEndIndex; j++) {
                     const neighborCell = cellsRef[i * props.width + j].current 
-                    if (neighborCell.state.visible === false && visited[neighborCell.props.id] !== true)
+                    if (neighborCell.state.visible === false && !visited[neighborCell.props.id])
                     {
                         visited[neighborCell.props.id] = true;
                         neighborCell.setState({visible:true});
