@@ -12,4 +12,4 @@ function BoardBar(props) {
 
 }
 
-export default BoardBar;
+export default BoardBar
