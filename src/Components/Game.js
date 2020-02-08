@@ -7,7 +7,7 @@ import Board from './Board'
 class Game extends Component {
     constructor(props) {
         super(props)
-        this.state = {label:"", width: 0, height: 0, mines: 0, flags: 0, openCells: 0 }
+        this.state = {label:"Enjoy", width: 0, height: 0, mines: 0, flags: 0, openCells: 0 }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.onToggleFlag = this.onToggleFlag.bind(this)
         this.resetBoard = this.resetBoard.bind(this)
@@ -25,7 +25,7 @@ class Game extends Component {
 
     handleSubmit(width, height, mines) {
         this.resetBoard()
-        this.setState({ label:"", width: width, height: height, mines: mines, flags: Number(mines) })
+        this.setState({ label:"Good Luck", width: width, height: height, mines: mines, flags: Number(mines) })
     }
 
     onToggleFlag(toggleOn) {
@@ -49,6 +49,11 @@ class Game extends Component {
             <h1 className="title">Minesweeper</h1>
             <CreateBoardForm onSubmit={this.handleSubmit} />
             <BoardBar flagsCount={this.state.flags} />
+
+            <div className="label-style">
+                <h1>{this.state.label}</h1>
+            </div>
+
             <Board width={this.state.width} 
                     newBoard={this.state.newBoard} 
                     height={this.state.height} 
@@ -56,9 +61,6 @@ class Game extends Component {
                     onToggleFlag={this.onToggleFlag}
                     onGameLost={this.onGameLost}
                     onGameWon={this.onGameWon}/>
-            <div className="label-style">
-                <h1>{this.state.label}</h1>
-            </div>
         </div>
     }
 }
